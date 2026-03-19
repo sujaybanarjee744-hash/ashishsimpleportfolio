@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashish Narayan – Biotechnology</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --teal: #0f766e;
+    --teal-light: #14b8a6;
+    --teal-pale: #ccfbf1;
+    --slate: #1e293b;
+    --slate-mid: #475569;
+    --slate-light: #94a3b8;
+    --bg: #f8fafc;
+    --white: #ffffff;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --shadow: 0 4px 24px rgba(15,118,110,0.08);
+    --radius: 16px;
+    --transition: 0.35s cubic-bezier(.4,0,.2,1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--slate);
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--teal);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--slate-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    transition: color var(--transition);
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 5% 60px;
+    background: linear-gradient(135deg, #e0f7f4 0%, #f0fdf9 35%, #f8fafc 65%, #e8f4fd 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(20,184,166,0.12) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  #hero::after {
+    content: '';
+    position: absolute;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+    bottom: -60px; left: -60px;
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 760px; position: relative; z-index: 1; }
+  .hero-avatar {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 28px;
+    font-size: 2.8rem; color: #fff;
+    box-shadow: 0 8px 32px rgba(15,118,110,0.25);
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    color: var(--slate);
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .hero-tagline {
+    font-size: 1rem;
+    color: var(--slate-mid);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .hero-tagline span {
+    background: var(--white);
+    border: 1px solid var(--teal-pale);
+    color: var(--teal);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal);
+    color: #fff;
+    padding: 13px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 20px rgba(15,118,110,0.3);
+  }
+  .hero-cta:hover { background: #0d6460; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(15,118,110,0.35); }
+
+  /* ── SECTIONS ── */
+  section { padding: 90px 5%; }
+  .container { max-width: 1060px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    color: var(--slate);
+    margin-bottom: 48px;
+    line-height: 1.25;
+  }
+  .section-divider {
+    width: 52px; height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    border-radius: 2px;
+    margin-bottom: 48px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-card {
+    background: linear-gradient(135deg, #f0fdf9 0%, #f8fafc 100%);
+    border: 1px solid var(--teal-pale);
+    border-radius: var(--radius);
+    padding: 40px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    color: rgba(15,118,110,0.07);
+    position: absolute;
+    top: -10px; left: 20px;
+    line-height: 1;
+  }
+  .about-card p {
+    font-size: 1.05rem;
+    color: var(--slate-mid);
+    line-height: 1.85;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--bg); }
+  .edu-timeline { display: flex; flex-direction: column; gap: 28px; }
+  .edu-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+    position: relative;
+  }
+  .edu-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(15,118,110,0.12); }
+  .edu-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--teal), var(--teal-light));
+    border-radius: 4px 0 0 4px;
+  }
+  .edu-logo {
+    width: 68px; height: 68px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    object-fit: contain;
+    flex-shrink: 0;
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .edu-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .edu-logo-placeholder {
+    width: 68px; height: 68px;
+    border-radius: 12px;
+    border: 2px dashed var(--teal-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    color: var(--teal-light);
+    flex-shrink: 0;
+    background: var(--teal-pale);
+  }
+  .edu-info h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--slate);
+    margin-bottom: 4px;
+  }
+  .edu-info .edu-sub {
+    font-size: 0.88rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .edu-info .edu-meta {
+    font-size: 0.82rem;
+    color: var(--slate-light);
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .edu-info .edu-meta span { display: flex; align-items: center; gap: 5px; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--white); }
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+  .skill-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--slate);
+    transition: all var(--transition);
+    cursor: default;
+  }
+  .skill-tag:hover {
+    background: var(--teal);
+    color: #fff;
+    border-color: var(--teal);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(15,118,110,0.2);
+  }
+  .skill-tag i { font-size: 0.85rem; color: var(--teal); transition: color var(--transition); }
+  .skill-tag:hover i { color: #fff; }
+
+  /* ── LANGUAGES ── */
+  #languages { background: var(--bg); }
+  .lang-list { display: flex; flex-direction: column; gap: 22px; max-width: 500px; }
+  .lang-item {}
+  .lang-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .lang-name { font-weight: 600; font-size: 0.95rem; }
+  .lang-level { font-size: 0.8rem; color: var(--teal); font-weight: 500; }
+  .lang-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .lang-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    width: 0;
+    transition: width 1.2s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ── INTERNSHIP ── */
+  #internship { background: var(--white); }
+  .intern-card {
+    background: linear-gradient(135deg, #f0fdf9, #f8fafc);
+    border: 1px solid var(--teal-pale);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .intern-icon {
+    width: 56px; height: 56px;
+    background: var(--teal);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; color: #fff;
+    flex-shrink: 0;
+  }
+  .intern-info h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+  .intern-info .intern-meta { font-size: 0.85rem; color: var(--slate-light); margin-bottom: 14px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .intern-info .intern-meta span { display: flex; align-items: center; gap: 5px; }
+  .intern-badge {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .intern-info p { color: var(--slate-mid); font-size: 0.95rem; line-height: 1.75; }
+
+  /* ── ACHIEVEMENTS ── */
+  #achievements { background: var(--bg); }
+  .ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .ach-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition);
+  }
+  .ach-card:hover { transform: translateY(-3px); }
+  .ach-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .ach-icon.gold { background: #fef9c3; color: #b45309; }
+  .ach-icon.bronze { background: #fed7aa; color: #9a3412; }
+  .ach-text h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+  .ach-text p { font-size: 0.83rem; color: var(--slate-light); }
+
+  /* ── CO-CURRICULAR ── */
+  #activities { background: var(--white); }
+  .act-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 36px;
+  }
+  .act-header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .act-header-icon {
+    width: 48px; height: 48px;
+    background: var(--teal);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1.2rem;
+  }
+  .act-header h3 { font-size: 1.05rem; font-weight: 700; }
+  .act-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .act-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.92rem; color: var(--slate-mid);
+  }
+  .act-list li::before {
+    content: '✦';
+    color: var(--teal);
+    font-size: 0.7rem;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── CIRF REPORT ── */
+  #cirf { background: var(--bg); }
+  .cirf-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    box-shadow: var(--shadow);
+    flex-wrap: wrap;
+  }
+  .cirf-icon-wrap {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 6px 20px rgba(15,118,110,0.25);
+  }
+  .cirf-info { flex: 1; min-width: 200px; }
+  .cirf-info h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
+  .cirf-info p { font-size: 0.88rem; color: var(--slate-light); margin-bottom: 16px; }
+  .cirf-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal);
+    color: #fff;
+    padding: 11px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.88rem; font-weight: 600;
+    border: none; cursor: pointer;
+    transition: background var(--transition), transform var(--transition);
+  }
+  .btn-primary:hover { background: #0d6460; transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: var(--teal);
+    padding: 11px 22px;
+    border-radius: 10px;
+    font-size: 0.88rem; font-weight: 600;
+    border: 1.5px solid var(--teal);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .btn-outline:hover { background: var(--teal-pale); }
+  #file-input { display: none; }
+  #upload-status { font-size: 0.82rem; color: var(--teal); margin-top: 8px; font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--slate);
+    color: #fff;
+    padding: 52px 5% 32px;
+    text-align: center;
+  }
+  .footer-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 28px; flex-wrap: wrap; }
+  .footer-links a {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--slate-light);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color var(--transition);
+  }
+  .footer-links a:hover { color: var(--teal-light); }
+  .footer-copy { font-size: 0.8rem; color: #64748b; }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 4%; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 0.74rem; }
+    .about-card { padding: 28px 24px; }
+    .intern-card { flex-direction: column; }
+    .cirf-card { flex-direction: column; gap: 20px; }
+    .edu-card { flex-direction: column; }
+    section { padding: 64px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Portfolio</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#internship">Internship</a></li>
+    <li><a href="#cirf">CIRF</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-avatar">🧬</div>
+    <h1 class="hero-name">[Ashish Narayan]</h1>
+    <div class="hero-tagline">
+      <span>Biotech Engineer</span>
+      <span>Microbiology Enthusiast</span>
+      <span>Future Innovator</span>
+    </div>
+    <a href="#about" class="hero-cta"><i class="fas fa-arrow-down"></i> Explore Portfolio</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container fade-in">
+    <div class="section-label"><i class="fas fa-user"></i> About Me</div>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="section-divider"></div>
+    <div class="about-card">
+      <p>I am a Biotechnology student with strong interests in microbiology and bioprocess engineering. I focus on understanding biological systems and applying them in industrial and research environments. I aim to contribute to innovation in biotechnology through practical skills and scientific knowledge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container fade-in">
+    <div class="section-label"><i class="fas fa-graduation-cap"></i> Education</div>
+    <h2 class="section-title">Academic Journey</h2>
+    <div class="section-divider"></div>
+    <div class="edu-timeline">
+
+      <div class="edu-card">
+        <div class="edu-logo-placeholder" title="School Logo">🏫</div>
+        <div class="edu-info">
+          <h3>Air Force Bal Bharati School</h3>
+          <div class="edu-sub">UKG to Senior Secondary (Class XII)</div>
+          <div class="edu-meta">
+            <span><i class="fas fa-calendar-alt"></i> Passed Out: 2023</span>
+            <span><i class="fas fa-map-marker-alt"></i> New Delhi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Lovely_Professional_University_logo.png/240px-Lovely_Professional_University_logo.png" alt="LPU Logo" onerror="this.parentElement.innerHTML='🎓'">
+        </div>
+        <div class="edu-info">
+          <h3>Lovely Professional University (LPU)</h3>
+          <div class="edu-sub">B.Tech – Biotechnology</div>
+          <div class="edu-meta">
+            <span><i class="fas fa-calendar-alt"></i> 2025 – 2029</span>
+            <span><i class="fas fa-map-marker-alt"></i> Punjab, India</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container fade-in">
+    <div class="section-label"><i class="fas fa-flask"></i> Skills</div>
+    <h2 class="section-title">My Competencies</h2>
+    <div class="section-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-tag"><i class="fas fa-dna"></i> Biotechnology</div>
+      <div class="skill-tag"><i class="fas fa-microscope"></i> Microbiology</div>
+      <div class="skill-tag"><i class="fas fa-industry"></i> Bioprocess Engineering</div>
+      <div class="skill-tag"><i class="fas fa-arrow-up"></i> Upstream Processing</div>
+      <div class="skill-tag"><i class="fas fa-arrow-down"></i> Downstream Processing</div>
+      <div class="skill-tag"><i class="fas fa-wine-bottle"></i> Fermentation Technology</div>
+      <div class="skill-tag"><i class="fas fa-file-excel"></i> Microsoft Excel</div>
+      <div class="skill-tag"><i class="fas fa-chart-bar"></i> Tableau</div>
+      <div class="skill-tag"><i class="fas fa-camera"></i> Photography</div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section id="languages" style="background:var(--bg);">
+  <div class="container fade-in">
+    <div class="section-label"><i class="fas fa-globe"></i> Languages</div>
+    <h2 class="section-title">Communication</h2>
+    <div class="section-divider"></div>
+    <div class="lang-list">
+      <div class="lang-item">
+        <div class="lang-top"><span class="lang-name">English</span><span class="lang-level">Full Professional Proficiency</span></div>
+        <div class="lang-bar"><div class="lang-fill" data-width="95%"></div></div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-top"><span class="lang-name">Hindi</span><span class="lang-level">Full Professional Proficiency</span></div>
+        <div class="lang-bar"><div class="lang-fill" data-width="98%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNSHIP -->
+<section id="internship">
+  <div class="container fade-in">
+    <div class="section-label"><i class="fas fa-briefcase"></i> Internship & Training</div>
+    <h2 class="section-title">Industry Experience</h2>
+    <div class="section-divider"></div>
+    <div class="intern-card">
+      <div class="intern-icon"><i class="fas fa-flask"></i></div>
+      <div class="intern-info">
+        <h3>CSIR – Council of Scientific & Industrial Research, Jammu</h3>
+        <div class="intern-meta">
+          <span><i class="fas fa-tag"></i> Fermentation Technology</span>
+          <span><i class="fas fa-clock"></i> 1 Week</span>
+        </div>
+        <div class="intern-badge">Industrial Training</div>
+        <p>Gained practical exposure to fermentation processes, industrial biotechnology techniques, and participated in technical training sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container fade-in">
+    <div class="section-label"><i class="fas fa-trophy"></i> Achievements</div>
+    <h2 class="section-title">Recognition & Awards</h2>
+    <div class="section-divider"></div>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-icon gold"><i class="fas fa-medal"></i></div>
+        <div class="ach-text">
+          <h4>Meritorious Student Award</h4>
+          <p>CSIR Jammu – For outstanding performance in training and quiz competition</p>
+        </div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon bronze"><i class="fas fa-award"></i></div>
+        <div class="ach-text">
+          <h4>Bronze Medal</h4>
+          <p>Intra-University Men's Doubles Badminton Competition</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CO-CURRICULAR -->
+<section id="activities">
+  <div class="container fade-in">
+    <div class="section-label"><i class="fas fa-heart"></i> Co-Curricular</div>
+    <h2 class="section-title">Community Involvement</h2>
+    <div class="section-divider"></div>
+    <div class="act-card">
+      <div class="act-header">
+        <div class="act-header-icon"><i class="fas fa-hand-holding-heart"></i></div>
+        <h3>National Service Scheme (NSS) – 7-Day Camp</h3>
+      </div>
+      <ul class="act-list">
+        <li>Participated in 7-Day NSS Camp with active community engagement</li>
+        <li>Distributed sanitary pads for menstrual hygiene awareness</li>
+        <li>Organized a free dental health camp for the local community</li>
+        <li>Contributed to sustained community service and social development activities</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CIRF REPORT -->
+<section id="cirf">
+  <div class="container fade-in">
+    <div class="section-label"><i class="fas fa-file-alt"></i> CIRF Report</div>
+    <h2 class="section-title">Training Report</h2>
+    <div class="section-divider"></div>
+    <div class="cirf-card">
+      <div class="cirf-icon-wrap"><i class="fas fa-file-pdf"></i></div>
+      <div class="cirf-info">
+        <h3>CIRF Report – CSIR Jammu Fermentation Training</h3>
+        <p>Upload your official CIRF report or view an existing document. Supports PDF and image formats.</p>
+        <div class="cirf-actions">
+          <button class="btn-primary" onclick="document.getElementById('file-input').click()">
+            <i class="fas fa-upload"></i> Upload Report
+          </button>
+          <button class="btn-outline" id="view-btn" style="display:none;" onclick="viewFile()">
+            <i class="fas fa-eye"></i> View Report
+          </button>
+          <input type="file" id="file-input" accept=".pdf,image/*" onchange="handleUpload(this)">
+        </div>
+        <div id="upload-status"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="mailto:your@email.com"><i class="fas fa-envelope"></i> Email</a>
+    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+  </div>
+  <p class="footer-copy">© 2025 [Ashish Narayan] · Biotechnology Portfolio · All rights reserved.</p>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Language bars animation
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.lang-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width;
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  const langSection = document.querySelector('#languages');
+  if (langSection) barObs.observe(langSection);
+
+  // File upload
+  let uploadedFile = null;
+  function handleUpload(input) {
+    if (input.files && input.files[0]) {
+      uploadedFile = input.files[0];
+      const status = document.getElementById('upload-status');
+      status.innerHTML = '<i class="fas fa-check-circle"></i> Uploaded: ' + uploadedFile.name;
+      document.getElementById('view-btn').style.display = 'inline-flex';
+    }
+  }
+  function viewFile() {
+    if (uploadedFile) {
+      const url = URL.createObjectURL(uploadedFile);
+      window.open(url, '_blank');
+    }
+  }
+</script>
+</body>
+</html>
